@@ -9,4 +9,6 @@ contract BlockUpdaterForTest is BlockUpdater {
      function verifyBlocks(bytes32[] calldata blockhashes, bytes32 proof) internal override {
           // require ?
      }
+
+     constructor(bytes32 genesisHash, uint256 totalDifficulty) BlockUpdater(genesisHash, totalDifficulty) {}
 }

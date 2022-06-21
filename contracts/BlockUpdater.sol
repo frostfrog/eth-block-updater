@@ -5,6 +5,16 @@ pragma solidity ^0.8.14;
 abstract contract BlockUpdater {
     function verifyBlocks(bytes32[] calldata blockhashes, bytes32 proof) internal virtual;
 
+    constructor(bytes32 genesisHash, uint256 totalDifficulty) {
+        BlockInfo memory tempInfo;
+
+        tempInfo.blockNumber = 0;
+        tempInfo.totalDifficulty = totalDifficulty;
+
+        blocks[genesisHash] = tempInfo;
+        canonical.push(genesisHash);
+    }
+
     function updateBlock(bytes32[] calldata blockhashes, bytes32 proof, uint256[] calldata totalDifficulty) public {
         verifyBlocks(blockhashes, proof);
 
