@@ -10,5 +10,7 @@ $ yarn install
 
 $ echo "YourPrivateKey" > .env
 
+$ yarn compile
+
 $ yarn deploy:eth
 ```
